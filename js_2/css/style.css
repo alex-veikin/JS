@@ -1,0 +1,194 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    width: 300px;
+    height: 300px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.main>* {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    animation: c 2s linear infinite;
+}
+
+.c1 {
+    left: 125px;
+}
+
+.c2 {
+    left: 215px;
+    top: 35px;
+    animation-delay: 0.25s;
+}
+
+.c3 {
+    right: 0;
+    top: 125px;
+    animation-delay: 0.5s;
+}
+
+.c4 {
+    left: 215px;
+    bottom: 35px;
+    animation-delay: 0.75s;
+}
+
+.c5 {
+    left: 125px;
+    bottom: 0;
+    animation-delay: 1s;
+}
+
+.c6 {
+    right: 215px;
+    bottom: 35px;
+    animation-delay: 1.25s;
+}
+
+.c7 {
+    left: 0;
+    top: 125px;
+    animation-delay: 1.5s;
+}
+
+.c8 {
+    right: 215px;
+    top: 35px;
+    animation-delay: 1.75s;
+}
+
+@keyframes c {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: .1;
+    }
+}
+
+.blocks {
+    width: 500px;
+    height: 400px;
+    border: 1px solid red;
+    margin: 0 auto;
+    position: relative;
+}
+
+.blocks * {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 150px;
+}
+
+.blocks .red {
+    background-color: #de7171;
+    animation: red 2s linear infinite;
+}
+
+.blocks .blue {
+    background-color: #72a4de;
+    animation: blue 2s linear infinite;
+}
+
+@keyframes blue {
+    0% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(400px, 0);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes red {
+    0% {
+        transform: translate(400px, 0);
+        z-index: 0;
+    }
+    50% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(400px, 0);
+        z-index: 1;
+    }
+}
+
+.circles {
+    width: 400px;
+    height: 400px;
+    /*    border: 1px solid red;*/
+    margin: 0 auto;
+    position: relative;
+    animation: circles 1s linear infinite;
+}
+
+.circles>* {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    animation: circle 1s linear infinite;
+}
+
+.circle1 {
+    left: 175px;
+    top: 10px;
+}
+
+.circle2 {
+    right: 10px;
+    bottom: 200px;
+}
+
+.circle3 {
+    right: 75px;
+    bottom: 20px;
+}
+
+.circle4 {
+    left: 75px;
+    bottom: 20px;
+}
+
+.circle5 {
+    left: 10px;
+    bottom: 200px;
+}
+
+@keyframes circles {
+    0% {
+        transform: rotate(72deg) scale(1);
+    }
+    25% {
+        transform: rotate(36deg) scale(.8);
+    }
+    50% {
+        transform: rotate(0deg) scale(1);
+    }
+    100% {}
+}
+
+@keyframes circle {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(.6);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
