@@ -6,7 +6,8 @@
 //     return !!(age && age > 4 && age < 100);
 // }
 //
-// document.write(validator(age) ? "Вам " + age + " лет" + '<br/><br/>' : "Некорректно введен возраст" + '<br/><br/>');
+// document.write(validator(age) ? "Вам " + age + " лет" : "Некорректно введен возраст");
+// document.write('<br/><br/>');
 
 
 //Используя Math.random() и Math.round() и функции, напишите компьютерную игру “камень, ножницы, бумага”.
@@ -16,36 +17,47 @@
 // В игре должна присутствовать проверка информации, которую ввел пользователь,
 // если введеные данные не камень, ножницы или бумага, попросить пользователя ввести еще раз.
 // Игра должна продолжатся до 10 побед.
-/*
-function random() {
-    var num = Math.round(Math.random() * (3 - 1) + 1);
-    return num === 1 ? "Камень" : num === 2 ? "Ножницы" : "Бумага";
-}
 
-var score = 0;
-var scoreComp = 0;
-
-while (true) {
-    var step = prompt("Ваш ход (камень, ножницы или бумага)");
-    var stepComp = random();
-
-    if (!step || step === stepComp) continue;
-
-    if ((step === "Камень" && stepComp === "Ножницы") ||
-        (step === "Ножницы" && stepComp === "Бумага") ||
-        (step === "Бумага" && stepComp === "Камень")){
-        score++;
-    } else {
-        scoreComp++;
-    }
-    alert(score + " " + scoreComp);
-
-    document.write("Вы: " + step + " ,компьютер: " + stepComp + ". Счет - " + score + ":" + scoreComp + "<br/>");
-    if (score === 5 || scoreComp === 5) break;
-}
-
-
-document.write(score > scoreComp ? "Вы победили!" + '<br/><br/>' : "Вы проиграли..." + '<br/><br/>');*/
+// function random() {
+//     var num = Math.round(Math.random() * (3 - 1) + 1);
+//     return num === 1 ? "камень" : num === 2 ? "ножницы" : "бумага";
+// }
+//
+//
+// var steps = 3; //до какого счета играть
+// var score = 0;
+// var scoreComp = 0;
+//
+// while ((score !== 3 || scoreComp !== 3)) {
+//     do {
+//         var step = prompt("Ваш ход (камень, ножницы или бумага)");
+//         if (!step) continue;
+//         step = step.toLowerCase();
+//     } while (step !== "камень" && step !== "ножницы" && step !== "бумага");
+//
+//     var stepComp = random();
+//
+//     if (step === stepComp) {
+//         alert("Одинаково");
+//         continue;
+//     }
+//
+//     if ((step === "камень" && stepComp === "ножницы") ||
+//         (step === "ножницы" && stepComp === "бумага") ||
+//         (step === "бумага" && stepComp === "камень")){
+//         score++;
+//     } else {
+//         scoreComp++;
+//     }
+//
+//     alert("Вы: " + step + " ,компьютер: " + stepComp + ". Счет - " + score + " : " + scoreComp);
+//
+//     document.write("Вы: " + step + " ,компьютер: " + stepComp + "<br/>");
+//     if (score === steps || scoreComp === steps) break;
+// }
+//
+// document.write("Счет - " + score + " : " + scoreComp + "<br/>");
+// document.write(score > scoreComp ? "Вы победили!" + '<br/><br/>' : "Вы проиграли..." + '<br/><br/>');
 
 
 //Написать компьютерную игру «отгадай число». Игра на двух игроков.
@@ -55,29 +67,37 @@ document.write(score > scoreComp ? "Вы победили!" + '<br/><br/>' : "В
 // если не угадал выводится сообщение «Загаданное число меньше указанного вами» или
 // «Загаданное число больше указанного вами».
 // Выигрывает тот игрок, который за наименьшее количество попыток отгадает число.
-/*
 
-function checkNumber(num, answer) {
-    return (answer < num)? "Загадочное число больше": (answer > num) ? "Загадочное число меньше": false;
-}
+// function checkNumber(num, answer) {
+//     return (answer < num) ? "Загадочное число больше": (answer > num) ? "Загадочное число меньше": false;
+// }
+//
+// var count = [];
+//
+// for (var i = 0; i < 2; i++) {
+//     count[i] = 0;
+//
+//     var max = +prompt("Игрок " + (i + 1) + " : Максимальное число");
+//
+//     do {
+//         var num = +prompt("Игрок " + (i || i + 2) + " : Введите число от 1 до " + max);
+//         if (num < 1 || num > max) alert("Выберите число из допустимого диапазона");
+//     } while (num < 1 || num > max);
+//
+//     do {
+//         var answer = +prompt("Игрок " + (i + 1) + " : Угадайте введенное число");
+//         count[i]++;
+//         if (checkNumber(num, answer)) alert(checkNumber(num, answer));
+//     } while (answer !== num);
+//
+//     if (!i) alert("Следующий игрок");
+// }
+//
+// var result = (count[0] > count[1]) ? "Победил игрок 1" : (count[0] < count[1]) ? "Победил игрок 2" : "Ничья";
+//
+// document.write(result + '<br/>');
+// document.write("Счет - " + count[0] + " : " + count[1] + '<br/><br/>');
 
-for (var i = 0; i < 2; i++) {
-    var max = +prompt("Игрок " + (i + 1) + " : Максимальное число");
-    var num = +prompt("Игрок " + (i || i + 2) + " : Введите число от 1 до " + max);
-    var count = [];
-    count[i] = 0;
-
-    do {
-        var answer = +prompt("Игрок " + (i + 1) + " : Угадайте введенное число");
-        count[i]++;
-        if (checkNumber(num, answer)) alert(checkNumber(num, answer));
-    } while (answer !== num);
-
-}
-
-var result = (count[0] > count[1]) ? "Победил игрок 1" : (count[0] < count[1]) ? "Победил игрок 2" : "Ничья";
-document.write(result + '<br/><br/>');
-*/
 
 
 //Написать функцию, которая принимает два числа (n1 и n2) и
@@ -104,10 +124,13 @@ document.write(result + '<br/><br/>');
 // если число n1 меньше чем n2 возвращает 1.
 
 // function compare(a, b) {
-//     return a > b ? -1 : a < b ? 1 : 0;
+//     if (typeof a === "number" && typeof b === "number") {
+//         return (a > b ? -1 : a < b ? 1 : 0);
+//     }
+//     return "Неверные данные";
 // }
 //
-// document.write(compare(2, 5) + '<br/><br/>');
+// document.write(compare(5, 5) + '<br/><br/>');
 
 
 
@@ -117,10 +140,13 @@ document.write(result + '<br/><br/>');
 // Вызов proverka(2,”nechet”) проверяет число 2 на нечетность и возвращает false (т.к. 2 нечетное).
 
 // function proverka(a, str) {
-//     return ((!(a % 2) && str === "chet") || ((a % 2) && str === "nechet"));
+//     if (typeof a === "number" && (str === "chet" || str === "nechet")) {
+//         return ((!(a % 2) && str === "chet") || ((a % 2) && str === "nechet"));
+//     }
+//     return "Неверные данные";
 // }
 //
-// document.write(proverka(2, 'chet') + '<br/><br/>');
+// document.write(proverka(3, 'nechet') + '<br/><br/>');
 
 
 
@@ -132,14 +158,10 @@ document.write(result + '<br/><br/>');
 // Функция должна работать вне зависимости от порядка введенных параметров.
 
 // function validator(a, b, c) {
-//     if ((a || b || c) ||
-//         (a === b || a === c || b === c) ||
-//         ((a > 0 && b > 0) || (b > 0 && c > 0) || (a > 0 && c > 0)) ||
-//         ((a < 0 && b < 0) || (b < 0 && c < 0) || (a < 0 && c < 0))) {
-//         return false;
-//     } else {
-//         return true;
-//     }
+//     return ((!a && (b < 0 && c > 0 || b > 0 && c < 0)) ||
+//             (!b && (a < 0 && c > 0 || a > 0 && c < 0)) ||
+//             (!c && (a < 0 && b > 0 || a > 0 && b < 0)));
 // }
 //
 // document.write(validator(2, 0, -2) + '<br/><br/>');
+
