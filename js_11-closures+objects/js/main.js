@@ -100,40 +100,18 @@ console.log(lines.result());
 
 
 
-// var object = {
-//     a: 4
-// };
-//
-// function isEmptyObj(obj) {
-//     var counter = 0;
-//     for(var key in obj) {
-//         if(key) counter++;
-//     }
-//     return counter ? "Объект не пустой" : "Объект пустой";
-// }
-//
-// console.log(isEmptyObj(object));
-
-
-
-
-function toConsole(str) {
-    console.log(str);
+///////////////////////////////////
+function toConsole(arr) {
+    console.log(arr);
 }
 
-function toAlert(str) {
-    alert(str);
+function toAlert(arr) {
+    alert(arr);
 }
 
 function splitToWords(msg, callback) {
     var arr = msg.split(" ");
-    if (callback === toConsole) {
-        callback(arr);
-    } else if (callback === toAlert) {
-        callback(arr);
-    } else {
-        return arr;
-    }
+    return (typeof callback === "function") ? callback(arr) : arr;
 }
 
 // splitToWords("My very long text", toAlert);
@@ -142,30 +120,30 @@ function splitToWords(msg, callback) {
 
 
 
+////////////////////////////////////
 function myFunc(param1, param2){
     var getArray = function (str) {
-        var substring = str.substring(str.indexOf(":") + 1, str.lastIndexOf("."));
+        var substring = str.substring(str.indexOf(":") + 1, str.lastIndexOf(".")).trim();
         return substring.split(", ");
     };
-   /* var arr = [];
-    return arr.concat(getArray(param1), getArray(param2));*/
     return  getArray(param1).concat(getArray(param2));
 }
 
-console.log(myFunc("This is the first sentence. This is a sentence with a list of items: cherries, oranges, apples, bananas.",
-    "This is the second sentence. This is a sentence with a list of items: red, blue, yellow, black."));
+console.log(
+    myFunc("This is the first sentence. " +
+        "This is a sentence with a list of items: cherries, oranges, apples, bananas.",
+    "This is the second sentence. " +
+        "This is a sentence with a list of items: red, blue, yellow, black."));
 
 
 
+/////////////////////////////////
 function find(str) {
     if (arguments.length > 1) {
         for(var i = 1; i < arguments.length; i++) {
-            if (str.indexOf(arguments[i]) >= 0) {
-                return str.indexOf(arguments[i]);
-            } else {
-                return -1;
-            }
+            if (str.indexOf(arguments[i]) >= 0) return str.indexOf(arguments[i]);
         }
+        return -1;
     }
     return  str;
 }
@@ -175,21 +153,15 @@ console.log(find("abc", "d"));
 console.log(find("abc", "d", "c"));
 console.log(find("abc"));
 
-function str () {
-    
+
+
+//////////////////////////////////
+function str (str) {
+    return str;
 }
 
-var str = {
-    str: "jkkl",
-    isNonEmptyStr: function () {
-        return (typeof this.str === "string");
-    }
+str.isNonEmptyStr = function () {
+    return (typeof this.str === "string");
 };
 
 console.log(str.isNonEmptyStr());
-
-var person = {
-    name:"John"
-};
-
-str.lastName = "ivanov";
