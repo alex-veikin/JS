@@ -20,7 +20,7 @@ $(function () {
         $("li.active").removeClass("active");
     }
 
-    function update() {
+    function updateElement() {
         var el = $("li.active");
 
         el.css({
@@ -55,10 +55,20 @@ $(function () {
         }
     });
 
-    up.click(update);
+    up.click(function() {
+        if($("li.active").length) {
+            updateElement();
+        } else {
+            alert("Select an item");
+        }
+    });
 
     del.click(function() {
-        $("li.active").remove();
+        if($("li.active").length) {
+            $("li.active").remove();
+        } else {
+            alert("Select an item");
+        }
     });
 
 });
