@@ -1,0 +1,11 @@
+ul {
+    list-style: none;
+}
+
+li {
+    cursor: pointer;
+}
+
+.active {
+    background-color: #82ff7f;
+}

@@ -19,12 +19,20 @@
 
 <div class="wrapper">
     <div class="form">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <button>Create</button>
-        <button>Change current</button>
-        <button>Delete current</button>
+        <label>Text: <input class="text" type="text" value=""></label>
+        <label>Color: <input class="color" type="text" value=""></label>
+        <label>Marker: 
+            <select class="marker">
+                <option value="circle">circle</option>
+                <option value="disc">disc</option>
+                <option value="square">square</option>
+            </select>
+        </label>
+        <div class="buttons">
+            <button class="create">Create</button>
+            <button class="up">Change current</button>
+            <button class="del">Delete current</button>
+        </div>
     </div>
     <div class="elements">
         <ul>
