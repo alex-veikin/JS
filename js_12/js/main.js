@@ -35,3 +35,27 @@
 // var auto1 = Object.create(Car).constructor("BMW", 200, "Black");
 //
 // auto1.go();
+
+$(function () {
+
+    // $("button").on("click", function () {
+    //     $(this).toggleClass("select");
+    // });
+
+    $(".slider").height($("img").height());
+
+    var images = $(".images img");
+
+    $(".prev").click(function () {
+        var active = images.filter(".active");
+        active.removeClass("active");
+        active.prev().addClass("active");
+    });
+
+    $(".next").click(function () {
+        var active = images.filter(".active");
+        active.removeClass("active");
+        active.next().addClass("active");
+    });
+
+});
