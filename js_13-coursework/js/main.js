@@ -66,6 +66,7 @@ $(function () {
     del.click(function() {
         if($("li.active").length) {
             $("li.active").remove();
+            $(".form input").val("");
         } else {
             alert("Select an item");
         }
