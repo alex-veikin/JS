@@ -8,7 +8,7 @@ $(function () {
     var del = $(".del");
     var ul = $(".elements ul");
 
-    function addNew() {
+    function addNew() { //Добавляем новый элеиент
         var el = "<li>" + text.val() + "</li>";
 
         $(el).css({
@@ -20,7 +20,7 @@ $(function () {
         $("li.active").removeClass("active");
     }
 
-    function updateElement() {
+    function updateElement() { //Обновляем элемент
         var el = $("li.active");
 
         el.css({
@@ -33,7 +33,7 @@ $(function () {
         $(".form input").val("");
     }
 
-    function selectElement() {
+    function selectElement() { //Отмечаем элемент
         var li = $("li");
         $(this).addClass("active");
         li.not($(this)).removeClass("active");
@@ -41,7 +41,9 @@ $(function () {
         text.val($(this).html());
 
         var style = $(this).attr("style");
-        style = style.slice( (style.indexOf(":") + 2), (style.indexOf(";")) );
+        style = style.slice( (style.indexOf(":") + 2), (style.indexOf(";")) ); //Получаем цвет
+        // style = style.match( /(?:color: ).+?(?=;)/gi );
+        // style = style[0].replace("color: ", "");
         color.val(style);
 
         marker.val($(this).css("list-style-type"));
