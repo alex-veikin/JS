@@ -1,40 +1,88 @@
 $(function () {
 
-    function Slider() {
-        this.images = $(".slider img");
-        this.btnPrev = $(".slider .prev");
-        this.btnNext = $(".slider .next");
+    (function slider() {
+        var images = $(".slider img");
+        var btnPrev = $(".slider .prev");
+        var btnNext = $(".slider .next");
 
         var i = 0;
 
-        var slider = this;
-
-        this.prev = function () {
-            slider.images.eq(i).removeClass('showed');
+        var prev = function () {
+            images.eq(i).removeClass('showed');
             i--;
 
-            if (i < 0) {
-                i = slider.images.length - 1;
-            }
+            if (i < 0) i = images.length - 1;
 
-            slider.images.eq(i).addClass('showed');
+            images.eq(i).addClass('showed');
         };
 
-        this.next = function () {
-            slider.images.eq(i).removeClass('showed');
+        var next = function () {
+            images.eq(i).removeClass('showed');
             i++;
 
-            if (i >= slider.images.length) {
-                i = 0;
-            }
+            if (i >= images.length) i = 0;
 
-            slider.images.eq(i).addClass('showed');
+            images.eq(i).addClass('showed');
         };
 
-        slider.btnPrev.click(slider.prev);
-        slider.btnNext.click(slider.next);
+        btnPrev.click(prev);
+        btnNext.click(next);
+    }());
+
+
+
+
+
+
+    var note = $(".note");
+    var btnAdd = $(".add");
+    var btnDel = $(".del");
+    var list = $(".list ul");
+
+    function select() {
+        $(this).toggleClass("selected");
+        $("li").not($(this)).removeClass("selected");
+        if($("li.selected").length) {
+            btnDel.fadeIn();
+        } else {
+            btnDel.fadeOut();
+        }
     }
 
-    var slider = new Slider();
+    function addNew() {
+        str = "<li>" + note.val() + "</li>";
+
+        $(str).appendTo(list);
+        note.val("");
+        btnAdd.fadeOut();
+    }
+
+    function deleteItem() {
+        $("li.selected").remove();
+        btnDel.fadeOut();
+    }
+
+
+    note.keyup(function() {
+        if (note.val()) {
+            btnAdd.fadeIn();
+        } else {
+            btnAdd.fadeOut();
+        }
+    });
+
+    btnAdd.click(function() {
+        if (note.val()) {
+            addNew();
+        }
+    });
+
+    $("ul").on("click", "li", select);
+
+    btnDel.click(function () {
+        if($("li.selected").length) {
+            deleteItem();
+        }
+    });
 
 });
